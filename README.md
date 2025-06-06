@@ -16,15 +16,46 @@ A modern TYPO3 sitepackage template demonstrating how to build powerful single-p
 - Pre-configured content element components
 - Modern development workflow with hot reloading
 
-## Requirements
+## Installation
+
+### Requirements
 
 - Node.js >= 18
 - TYPO3 v13.4
 - [TYPO3 Inertia Adapter](https://github.com/leon-wbr/inertia)
 
-## Quick Start
+### Quick Start
 
-1. Install TYPO3 and the Inertia adapter
-2. Install this sitepackage
-3. Run `yarn install` in Resources/Private/Vite
-4. Start development with `yarn dev`
+Clone this repository and require it locally using Composer.
+
+This extension is set up to be used with the [Vite AssetCollector for TYPO3](https://github.com/s2b/vite-asset-collector), which needs a configuration in the root of your TYPO3 installation. 
+
+An example configuration that will work out of the box if the paths are matched (keep in mind that you need to install the dependencies):
+
+```js
+import { defineConfig } from "vite";
+import typo3 from "vite-plugin-typo3";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import path from "path";
+
+export default defineConfig({
+  plugins: [typo3(), react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(
+        __dirname,
+        "./packages/inertia-sitepackage/Resources/Private/src"
+      ),
+    },
+  },
+});
+```
+
+Run this to install the dependencies:
+
+`ddev yarn add vite vite-plugin-typo3 @vitejs/plugin-react @tailwindcss/vite`
+
+Start the Vite development server and launch the project:
+
+`ddev vite && ddev launch`
