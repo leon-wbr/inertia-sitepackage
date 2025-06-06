@@ -1,0 +1,22 @@
+{
+  "name": "leon-wbr/inertia-sitepackage",
+  "require": {
+    "typo3/cms-core": "^13.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "LeonWbr\\InertiaSitepackage\\": "Classes/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Leon Weber",
+      "email": "lw.leonweber@gmail.com"
+    }
+  ],
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "inertia_sitepackage"
+    }
+  }
+}
