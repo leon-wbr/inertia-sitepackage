@@ -1,0 +1,14 @@
+<html
+  data-namespace-typo3-fluid="true"
+  xmlns:vite="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
+>
+  <div id="{rootView}" data-page="{pageData -> f:format.json()}"></div>
+  <script type="module">
+    import RefreshRuntime from "https://vite.typo3-inertia-example.ddev.site/@react-refresh";
+    RefreshRuntime.injectIntoGlobalHook(window);
+    window.$RefreshReg$ = () => {};
+    window.$RefreshSig$ = () => (type) => type;
+    window.__vite_plugin_react_preamble_installed__ = true;
+  </script>
+  <vite:asset entry="EXT:inertia_sitepackage/Resources/Private/main.entry.js" />
+</html>
