@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 #app {
-  @apply min-h-screen flex flex-col;
+  @apply min-h-screen flex flex-col justify-start items-center;
 }
 
 @theme inline {
