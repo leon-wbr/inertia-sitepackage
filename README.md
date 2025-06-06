@@ -1,4 +1,4 @@
-> **⚠️ EXPERIMENTAL STATUS**: This package is publicly available but in early experimental stage. It is not recommended for production use yet. Expect breaking changes, limited debugging capabilities, and ongoing significant architectural changes. Feel free to try it out and provide feedback, but use with caution.
+> **⚠️ EXPERIMENTAL STATUS**: This package is in early experimental stage. It is not recommended for production use yet. Expect breaking changes, limited debugging capabilities, and ongoing significant architectural changes. Feel free to try it out and provide feedback, but use with caution.
 
 # TYPO3 Inertia Sitepackage
 
@@ -6,7 +6,7 @@ A modern TYPO3 sitepackage template demonstrating how to build powerful single-p
 
 ## ⚠️ Known Issues
 
-- Asset handling is currently limited to development server injection (done in TYPO3 Inertia Adapter)
+- Asset handling is currently limited to development server injection (done in [TYPO3 Inertia Adapter](https://github.com/leon-wbr/inertia))
 - Production builds require proper asset collection (planned integration with [vite-asset-collector](https://docs.typo3.org/p/praetorius/vite-asset-collector))
 
 ## Features
