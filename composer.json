@@ -1,5 +1,6 @@
 {
   "name": "leon-wbr/inertia-sitepackage",
+  "type": "typo3-cms-extension",
   "require": {
     "typo3/cms-core": "^13.4"
   },
