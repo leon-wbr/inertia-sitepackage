@@ -1,6 +1,7 @@
 import Header from "./CTypes/Header";
 import { Link } from "@inertiajs/react";
 import parse, { domToReact } from "html-react-parser";
+import Accordion from "./CTypes/Accordion";
 
 export interface ContentElement {
   CType: string;
@@ -13,6 +14,7 @@ const contentElementComponents: Record<
   React.ComponentType<{ data: ContentElement }>
 > = {
   header: Header,
+  accordion: Accordion,
 };
 
 export default function ContentElements({
