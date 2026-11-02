@@ -1,4 +1,4 @@
-> **⚠️ EXPERIMENTAL STATUS**: This package is in early experimental stage. It is not recommended for production use yet. Expect breaking changes, limited debugging capabilities, and ongoing significant architectural changes. Feel free to try it out and provide feedback, but use with caution.
+> **This repository is archived.** The sitepackage has been folded into [leon-wbr/inertia-typo3](https://github.com/leon-wbr/inertia-typo3), where it lives on as the example project's starter in [`example/packages/sitepackage`](https://github.com/leon-wbr/inertia-typo3/tree/main/example/packages/sitepackage). To start a project, copy that directory into your project's `packages/` directory; the [adapter's README](https://github.com/leon-wbr/inertia-typo3#starting-from-the-example-sitepackage) has the steps. Issues and pull requests go to leon-wbr/inertia-typo3.
 
 # TYPO3 Inertia Sitepackage
 
