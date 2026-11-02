@@ -1,53 +1,49 @@
-import Header from "./CTypes/Header";
 import { Link } from "@inertiajs/react";
-import parse, { domToReact } from "html-react-parser";
+import parse, { domToReact, Element, type DOMNode } from "html-react-parser";
+import type { ComponentType } from "react";
 
-export interface ContentElement {
-  CType: string;
-  html?: string;
-  [key: string]: any;
-}
+import type { ContentElement } from "../types/inertia";
+import Header from "./CTypes/Header";
 
-const contentElementComponents: Record<
-  string,
-  React.ComponentType<{ data: ContentElement }>
-> = {
+const components: Record<string, ComponentType<{ data: Record<string, unknown> }>> = {
   header: Header,
 };
 
+/**
+ * Renders content elements: with a React component where there is one,
+ * otherwise from the HTML TYPO3 rendered. Internal links in that HTML
+ * become Inertia links.
+ */
 export default function ContentElements({
   contentElements,
 }: {
-  contentElements?: any[];
+  contentElements: ContentElement[];
 }) {
   return (
-    <div className="content-elements">
-      {contentElements?.map((element, index) => {
-        const Component = contentElementComponents[element.CType];
+    <div className="content-elements space-y-8">
+      {contentElements.map((element, index) => {
+        const key = String(element.data.uid ?? index);
+        const Component = components[element.CType];
 
         if (Component) {
-          return <Component key={index} data={element.data} />;
+          return <Component key={key} data={element.data} />;
         }
 
         return (
-          parse(element.html || "", {
-            replace(domNode: any) {
-              if (domNode.name !== "a") {
-                return;
-              }
-
-              const href = domNode.attribs?.href;
-              if (!href || !href.startsWith("/")) {
-                return;
-              }
-
-              return (
-                <Link href={href}>
-                  {domToReact(domNode.children, domNode.options)}
-                </Link>
-              );
-            },
-          }) || null
+          <div key={key} className="prose">
+            {parse(element.html ?? "", {
+              replace(node: DOMNode) {
+                if (!(node instanceof Element) || node.name !== "a") {
+                  return;
+                }
+                const href = node.attribs.href;
+                if (!href?.startsWith("/")) {
+                  return;
+                }
+                return <Link href={href}>{domToReact(node.children as DOMNode[])}</Link>;
+              },
+            })}
+          </div>
         );
       })}
     </div>
