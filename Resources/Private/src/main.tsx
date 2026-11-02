@@ -6,17 +6,17 @@ import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
-const pages = import.meta.glob<{ default: ResolvedComponent }>("./Pages/**/*.tsx", {
-  eager: true,
-});
+// Lazy, not eager: Vite hoists eager glob imports above the preamble import,
+// so the pages would load before Fast Refresh is set up.
+const pages = import.meta.glob<{ default: ResolvedComponent }>("./Pages/**/*.tsx");
 
 void createInertiaApp({
-  resolve: (name) => {
+  resolve: async (name) => {
     const page = pages[`./Pages/${name}.tsx`];
     if (!page) {
       throw new Error(`Unknown page component: ${name}`);
     }
-    return page;
+    return (await page()).default;
   },
   setup({ el, App, props }) {
     createRoot(el).render(<App {...props} />);
